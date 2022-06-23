@@ -4,7 +4,7 @@ import re
 EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
 
 class User:
-    db='paintings_db'
+    db='Bmovies'
     @staticmethod
     def validate_user( user ):
         is_valid = True
@@ -16,10 +16,10 @@ class User:
         if not EMAIL_REGEX.match(user['email']): 
             flash("Invalid email address!", 'register')
             is_valid = False
-        if len(user['first_name']) < 2:
+        if len(user['f_name']) < 2:
             flash('First name must be at least 3 characters', 'register')
             is_valid=False
-        if len(user['last_name']) < 2:
+        if len(user['l_name']) < 2:
             flash('Last name must be at least 3 characters', 'register')
             is_valid = False
         if len(user['password']) < 8:
@@ -32,8 +32,8 @@ class User:
         
     def __init__(self,data):
         self.id=data['id']
-        self.first_name=data['first_name']
-        self.last_name=data['last_name']
+        self.f_name=data['f_name']
+        self.l_name=data['l_name']
         self.email=data['email']
         self.password=data['password']
         self.created_at=data['created_at']
@@ -41,7 +41,7 @@ class User:
 
     @classmethod
     def save(cls, form_data):
-        query='insert into users (first_name, last_name, email,password) values (%(first_name)s, %(last_name)s, %(email)s, %(password)s);'
+        query='insert into users (f_name, l_name, email,password) values (%(f_name)s, %(l_name)s, %(email)s, %(password)s);'
         return connectToMySQL(cls.db).query_db(query, form_data)
 
     @classmethod
