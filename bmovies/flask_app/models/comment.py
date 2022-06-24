@@ -20,7 +20,20 @@ class Comment:
         self.updated_at=data['updated_at']
 
     @classmethod
-    
+    def save(cls, data):
+        query='insert into comments (comment, user_id, movie_id) values (%(comment)s, %(user_id)s, %(movie_id)s);'
+        return connectToMySQL(cls.db).query_db(query, data)
+
+    @classmethod
+    def get_all_comments(cls):
+        query='select * from comments left join movies on movies.id = comments.movie_id'
+        results = connectToMySQL(cls.db).query_db(query)
+        all_comments=[]
+        for i in results:
+            all_comments.append(cls(i))
+        return all_comments
+
+
 
 
         
