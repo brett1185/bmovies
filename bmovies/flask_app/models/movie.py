@@ -9,7 +9,7 @@ class Movie:
         if len(movie['title']) <2:
             flash('Title must be at least two characters long!')
             is_valid=False
-        if len(movie['date_released'])<1900:
+        if movie['date_released']=='':
             flash('Movies can be old, but not that old!')
             is_valid=False
         if len(movie['summary']) < 10:
@@ -28,7 +28,7 @@ class Movie:
 
     @classmethod
     def save(cls, data):
-        query='insert into movies(title, date_released, summary, user_id) values (%(title)s, %(date_released)s, %(summary)s, %(user_id)s;'
+        query='insert into movies (title, date_released, summary, user_id) values (%(title)s, %(date_released)s, %(summary)s, %(user_id)s);'
         return connectToMySQL(cls.db).query_db(query, data)
 
     @classmethod

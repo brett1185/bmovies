@@ -10,7 +10,7 @@ class User:
         is_valid = True
         query='select * from users where email = %(email)s;'
         results=connectToMySQL(User.db).query_db(query, user)
-        if len(results) >= 1:
+        if len(results) >= 1 :
             flash("Email already taken.","register")
             is_valid=False
         if not EMAIL_REGEX.match(user['email']): 

@@ -9,7 +9,16 @@
 <body>
     <div>
         <h1> Welcome {{user.f_name}}!!</h1>
+        <a href="/movie">Add a movie?</a>
     </div>
+    <div>
+        <h1>List of Movies!</h1>
+        {% for movie in movies %}
+        <a href="/movie/{{movie.id}}">{{movie.title}}</a>
+        {%endfor%}
+    </div>
+
+
     
 </body>
 </html>
