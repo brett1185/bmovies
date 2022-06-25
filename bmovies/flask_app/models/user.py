@@ -8,7 +8,7 @@ class User:
     @staticmethod
     def validate_user( user ):
         is_valid = True
-        query='select * from users where email=%(email)s;'
+        query='select * from users where email = %(email)s;'
         results=connectToMySQL(User.db).query_db(query, user)
         if len(results) >= 1:
             flash("Email already taken.","register")
@@ -40,9 +40,9 @@ class User:
         self.updated_at=data['updated_at']
 
     @classmethod
-    def save(cls, form_data):
-        query='insert into users (f_name, l_name, email,password) values (%(f_name)s, %(l_name)s, %(email)s, %(password)s);'
-        return connectToMySQL(cls.db).query_db(query, form_data)
+    def save(cls, data):
+        query='insert into users (f_name, l_name, email, password) values (%(f_name)s, %(l_name)s, %(email)s, %(password)s);'
+        return connectToMySQL(cls.db).query_db(query, data)
 
     @classmethod
     def get_all(cls):
