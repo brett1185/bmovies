@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{movie.title}}</title>
+</head>
+<body>
+    <div>
+        <h1>Welcome {{user.f_name}}!!!</h1>
+        <a href="/dashboard">Dashboard</a>
+    </div>
+    <div>
+        <h2 style='font-style: oblique; text-decoration: underline;'>{{movie.title}}</h2>
+        <p>Year released: {{movie.date_released}}</p>
+        <p>{{movie.summary}}</p>
+        <p>added by: {{user.f_name}} {{user.l_name}}</p>
+        <a href="/add/comment">Add a Comment</a>
+
+    </div>
+</body>
+</html>

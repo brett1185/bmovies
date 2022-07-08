@@ -30,3 +30,15 @@ def add_movie():
         }
     Movie.save(data)
     return redirect('/dashboard')
+
+@app.route('/movie/<int:id>')
+def single_movie(id):
+    if 'user_id' not in session:
+        return redirect('/')
+    data = {
+        'id':id
+    }
+    user_data={
+        'id':session['user_id']
+    }
+    return render_template('movie.html', movie=Movie.get_one(data), user=User.get_by_id(user_data) )
