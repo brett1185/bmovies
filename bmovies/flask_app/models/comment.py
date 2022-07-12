@@ -26,7 +26,7 @@ class Comment:
 
     @classmethod
     def get_all_comments(cls):
-        query='select * from comments left join movies on movies.id = comments.movie_id'
+        query='select * from comments left join movies on comments.commentsid = movies.movie_id join users on comments.user_id=user.id'
         results = connectToMySQL(cls.db).query_db(query)
         all_comments=[]
         for i in results:

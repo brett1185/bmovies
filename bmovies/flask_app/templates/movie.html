@@ -17,6 +17,11 @@
         <p>{{movie.summary}}</p>
         <p>added by: {{user.f_name}} {{user.l_name}}</p>
         <a href="/add/comment">Add a Comment</a>
+        <h2>Comments</h2>
+            {% for comment in comments%}
+            <p>{{comment.comment}}</p>
+            {%endfor%}
+        
 
     </div>
 </body>

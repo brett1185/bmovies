@@ -26,7 +26,7 @@ def add_comment():
     data={
         'comment': request.form['comment'],
         'user_id':session['user_id'],
-        'movie_id': request.form['movie.id']
+        'id': request.form['movie.id']
         
         }
     Comment.save(data)

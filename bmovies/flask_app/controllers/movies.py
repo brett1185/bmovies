@@ -1,7 +1,8 @@
-from flask import render_template,redirect,session,request, flash
+from flask import render_template,redirect,session,request
 from flask_app import app
 from flask_app.models.user import User
 from flask_app.models.movie import Movie
+from flask_app.models.comment import Comment
 
 @app.route('/dashboard')
 def dashboard():
@@ -41,4 +42,4 @@ def single_movie(id):
     user_data={
         'id':session['user_id']
     }
-    return render_template('movie.html', movie=Movie.get_one(data), user=User.get_by_id(user_data) )
+    return render_template('movie.html', movie=Movie.get_one(data), user=User.get_by_id(user_data), comments=Comment.get_all_comments())
