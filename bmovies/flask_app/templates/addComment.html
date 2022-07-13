@@ -13,9 +13,9 @@
     </nav>
     <div>
         <form action="comment/add" method="POST">
-            <label>Write your comment below:</label>
+            <label>Write your comment for {{movie.title}} below!:</label>
             <input type="textarea" name='comment'/>
-            <input type='hidden' name='{movie.id}'/>
+            <input type='hidden' name='{{movie.id}}'/>
             <input type="submit" name='Submit'/>
         </form>
     </div>
